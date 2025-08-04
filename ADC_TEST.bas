@@ -1,0 +1,12 @@
+10     REM analog port 4
+20     ADCSTART 4
+30     FOR I=1 TO 10
+40     FOR J=1 TO 5
+50     ADCGET ADV
+60    V=ADV*3.3/2048
+70     PRINT V,
+80     FOR K=1 TO 4000 :  NEXT K
+90     NEXT J
+100    PRINT
+110    NEXT I
+120    ADCSTOP
