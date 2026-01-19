@@ -3,24 +3,24 @@ CH559T		SET	1		; Chip select, 1=CH559T, 0=CH559L
 ;                                                            Ver.0.63 2023.07.16
 ;                                                            Ver.0.64 2023.11.19
 ;
-; WCH CH559T/L ‘Î‰ƒo[ƒWƒ‡ƒ“(SFRƒAƒNƒZƒX,I2C & SPI, ADC“üo—Í‹@”\•t)
+; WCH CH559T/L å¯¾å¿œãƒãƒ¼ã‚¸ãƒ§ãƒ³(SFRã‚¢ã‚¯ã‚»ã‚¹,I2C & SPI, ADCå…¥å‡ºåŠ›æ©Ÿèƒ½ä»˜)
 ;   Internal Clock 12MHz, CPU Clock(Fsys) 48MHz(Default->Extend)
-;   Timer2 ‚ğ UART0 ‚ÌƒVƒŠƒAƒ‹ƒ|[ƒg—pƒNƒƒbƒN¶¬‚Ég—pB
-;   ƒVƒŠƒAƒ‹ƒ|[ƒg‚Ì©“®‘¬“x”F¯‹@”\‚ª³í‚É“®‚©‚È‚¢‚Ì‚Å19.2KbpsŒÅ’è‚Åg‚¤B
-;   SPI‚Í MSB first, Mode-3 ‚É‘Î‰B
-;   CH559T‚ÍUART0ƒ|[ƒg‚ğg—p‚Å‚«‚È‚¢‚Ì‚Å‘ã‘ÖUART0ƒ|[ƒg‚ğg—p(P3.0,P3.1 -> P0.2,P0.3)
-;   ƒ\[ƒX‚ÌƒIƒvƒVƒ‡ƒ“‚ÅCH559L‚ÆCH559T‚ğ‘I‘ğ ( 1=CH559T, 0=CH559L )
+;   Timer2 ã‚’ UART0 ã®ã‚·ãƒªã‚¢ãƒ«ãƒãƒ¼ãƒˆç”¨ã‚¯ãƒ­ãƒƒã‚¯ç”Ÿæˆã«ä½¿ç”¨ã€‚
+;   ã‚·ãƒªã‚¢ãƒ«ãƒãƒ¼ãƒˆã®è‡ªå‹•é€Ÿåº¦èªè­˜æ©Ÿèƒ½ãŒæ­£å¸¸ã«å‹•ã‹ãªã„ã®ã§19.2Kbpså›ºå®šã§ä½¿ã†ã€‚
+;   SPIã¯ MSB first, Mode-3 ã«å¯¾å¿œã€‚
+;   CH559Tã¯UART0ãƒãƒ¼ãƒˆã‚’ä½¿ç”¨ã§ããªã„ã®ã§ä»£æ›¿UART0ãƒãƒ¼ãƒˆã‚’ä½¿ç”¨(P3.0,P3.1 -> P0.2,P0.3)
+;   ã‚½ãƒ¼ã‚¹ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã§CH559Lã¨CH559Tã‚’é¸æŠ ( 1=CH559T, 0=CH559L )
 ;
-;   SFR—Ìˆæ‚ÌƒAƒNƒZƒX‹@”\‚ğ’Ç‰ÁiI2C“üo—Í‹@”\‚Íg—p‚¹‚¸j
+;   SFRé ˜åŸŸã®ã‚¢ã‚¯ã‚»ã‚¹æ©Ÿèƒ½ã‚’è¿½åŠ ï¼ˆI2Cå…¥å‡ºåŠ›æ©Ÿèƒ½ã¯ä½¿ç”¨ã›ãšï¼‰
 ;   I2CSFR  (C) H.-J. Boehling & D. Wulf 14.11.01
 
 ;     WRSFR ([address]) [byte]      Writes to a special funkton register.
 ;     RDSFR ([address]) [variable]  Reads from a special funkton register.
 ;
-;   2023.05.13 CH552”Å‚ğCH559—p‚É‘‚«Š·‚¦
+;   2023.05.13 CH552ç‰ˆã‚’CH559ç”¨ã«æ›¸ãæ›ãˆ
 ;
-;   2023.06.12 SPI“üo—Í‹@”\‚ğ’Ç‰ÁB
-;   2023.11.19 SPI‚Ì“¯“üo—Í(rotate)‹@”\‚ğ’Ç‰Á
+;   2023.06.12 SPIå…¥å‡ºåŠ›æ©Ÿèƒ½ã‚’è¿½åŠ ã€‚
+;   2023.11.19 SPIã®åŒæ™‚å…¥å‡ºåŠ›(rotate)æ©Ÿèƒ½ã‚’è¿½åŠ 
 ;
 ;     SPISTART [speed]     setup SPI interface - "speed" is system-clock division facter, must be 32 or above
 ;     SPIPUT   [byte]      put "byte" to SPI
@@ -29,7 +29,7 @@ CH559T		SET	1		; Chip select, 1=CH559T, 0=CH559L
 ;     SPIROT   ([byte]) [variable]  data rotate, put "byte" and get "valiable" to/from SPI
 ;     SPICS    [0/1]       CS(SS) port Low/High control
 ;
-;   2023.06.18 I2CSFR ‚ÌI2C“üo—Í‹@”\‚ğ‘S–Ê‘‚«Š·‚¦
+;   2023.06.18 I2CSFR ã®I2Cå…¥å‡ºåŠ›æ©Ÿèƒ½ã‚’å…¨é¢æ›¸ãæ›ãˆ
 ;
 ;     I2CSTART             Sends a start condition to I2C bus.
 ;     I2CSTOP              Sends a stop condition to I2C bus.
@@ -40,13 +40,13 @@ CH559T		SET	1		; Chip select, 1=CH559T, 0=CH559L
 ;                          Reads a byte from I2C to a BASIC variable and
 ;                          acknowledge (0/1) returned to the sender, ACK = 0, NACK = 1
 ;
-;   2023.06.25 ADC“ü—Í‹@”\‚ğ’Ç‰Á
+;   2023.06.25 ADCå…¥åŠ›æ©Ÿèƒ½ã‚’è¿½åŠ 
 ;
 ;     ADCSTART [channel]   setup ADC function - "channel" is aanalog input port number [0-7]
 ;     ADCGET   [variable]  get "valiable" from ADC [0-2047]
 ;     ADCSTOP              close ADC function and analog port
 ;
-;   2023.07.01 CH559T‚É‘Î‰Aƒpƒ‹ƒX¶¬ƒRƒ}ƒ“ƒh‚ğ’Ç‰ÁiƒeƒXƒg—pj
+;   2023.07.01 CH559Tã«å¯¾å¿œã€ãƒ‘ãƒ«ã‚¹ç”Ÿæˆã‚³ãƒãƒ³ãƒ‰ã‚’è¿½åŠ ï¼ˆãƒ†ã‚¹ãƒˆç”¨ï¼‰
 ;
 ;     PULSE [loop-number]  generate pulse, output port is P1.7(SCL)
 ;                          pulse generation ends when port P1.6(SDA) turns off
@@ -602,7 +602,7 @@ STESIZ	EQU	FPSIZ+3 	;SIZE OF SYMBOL ADJUSTED TABLE ELEMENT
 PSTART	EQU	512		;START OF A PROGRAM IN RAM
 FSIZE	EQU	FPSIZ+FPSIZ+2+2+1
 ;
-;=== CH559 Added =====
+;=== CH558 Added =====
 ERAMEND	EQU	0FFFH ; EX-RAM last addr (6KB)
 ;=====================
 ;
@@ -9265,4 +9265,5 @@ sfrgettab:	mov	A,128
 ;----------------------------------------------------------------------------
 
 		end
+
 
