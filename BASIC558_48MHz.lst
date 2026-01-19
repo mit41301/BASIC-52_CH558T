@@ -23,24 +23,24 @@ C51ASM V1.2             Copyright (c) 2009 Atmel Corp.            PAGE 1
     3:                          ;                                       
     4:                          ;                                       
     5:                          ;
-    6:                          ; WCH CH559T/L ‘Î‰ƒo[ƒWƒ‡ƒ“(SFRƒAƒNƒZƒ
+    6:                          ; WCH CH559T/L å¯¾å¿œãƒãƒ¼ã‚¸ãƒ§ãƒ³(SFRã‚¢ã‚¯ã‚»
     7:                          ;   Internal Clock 12MHz, CPU Clock(Fsys
-    8:                          ;   Timer2 ‚ğ UART0 ‚ÌƒVƒŠƒAƒ‹ƒ|[ƒg—pƒN
-    9:                          ;   ƒVƒŠƒAƒ‹ƒ|[ƒg‚Ì©“®‘¬“x”F¯‹@”\‚ª³
-   10:                          ;   SPI‚Í MSB first, Mode-3 ‚É‘Î‰B
-   11:                          ;   CH559T‚ÍUART0ƒ|[ƒg‚ğg—p‚Å‚«‚È‚¢‚Ì‚
-   12:                          ;   ƒ\[ƒX‚ÌƒIƒvƒVƒ‡ƒ“‚ÅCH559L‚ÆCH559T‚ğ
+    8:                          ;   Timer2 ã‚’ UART0 ã®ã‚·ãƒªã‚¢ãƒ«ãƒãƒ¼ãƒˆç”¨ã‚¯
+    9:                          ;   ã‚·ãƒªã‚¢ãƒ«ãƒãƒ¼ãƒˆã®è‡ªå‹•é€Ÿåº¦èªè­˜æ©Ÿèƒ½ãŒæ­£
+   10:                          ;   SPIã¯ MSB first, Mode-3 ã«å¯¾å¿œã€‚
+   11:                          ;   CH559Tã¯UART0ãƒãƒ¼ãƒˆã‚’ä½¿ç”¨ã§ããªã„ã®
+   12:                          ;   ã‚½ãƒ¼ã‚¹ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã§CH559Lã¨CH559Tã‚’
    13:                          ;
-   14:                          ;   SFR—Ìˆæ‚ÌƒAƒNƒZƒX‹@”\‚ğ’Ç‰ÁiI2C“üo
+   14:                          ;   SFRé ˜åŸŸã®ã‚¢ã‚¯ã‚»ã‚¹æ©Ÿèƒ½ã‚’è¿½åŠ ï¼ˆI2Cå…¥å‡º
    15:                          ;   I2CSFR  (C) H.-J. Boehling & D. Wulf
    16:                          
    17:                          ;     WRSFR ([address]) [byte]      Writ
    18:                          ;     RDSFR ([address]) [variable]  Read
    19:                          ;
-   20:                          ;   2023.05.13 CH552”Å‚ğCH559—p‚É‘‚«Š·‚
+   20:                          ;   2023.05.13 CH552ç‰ˆã‚’CH559ç”¨ã«æ›¸ãæ›
    21:                          ;
-   22:                          ;   2023.06.12 SPI“üo—Í‹@”\‚ğ’Ç‰ÁB
-   23:                          ;   2023.11.19 SPI‚Ì“¯“üo—Í(rotate)‹@
+   22:                          ;   2023.06.12 SPIå…¥å‡ºåŠ›æ©Ÿèƒ½ã‚’è¿½åŠ ã€‚
+   23:                          ;   2023.11.19 SPIã®åŒæ™‚å…¥å‡ºåŠ›(rotate)æ©Ÿ
    24:                          ;
    25:                          ;     SPISTART [speed]     setup SPI int
    26:                          ;     SPIPUT   [byte]      put "byte" to
@@ -49,7 +49,7 @@ C51ASM V1.2             Copyright (c) 2009 Atmel Corp.            PAGE 1
    29:                          ;     SPIROT   ([byte]) [variable]  data
    30:                          ;     SPICS    [0/1]       CS(SS) port L
    31:                          ;
-   32:                          ;   2023.06.18 I2CSFR ‚ÌI2C“üo—Í‹@”\‚ğ‘
+   32:                          ;   2023.06.18 I2CSFR ã®I2Cå…¥å‡ºåŠ›æ©Ÿèƒ½ã‚’
    33:                          ;
    34:                          ;     I2CSTART             Sends a start
    35:                          ;     I2CSTOP              Sends a stop 
@@ -60,7 +60,7 @@ C51ASM V1.2             Copyright (c) 2009 Atmel Corp.            PAGE 1
    40:                          ;                          Reads a byte 
    41:                          ;                          acknowledge (
    42:                          ;
-   43:                          ;   2023.06.25 ADC“ü—Í‹@”\‚ğ’Ç‰Á
+   43:                          ;   2023.06.25 ADCå…¥åŠ›æ©Ÿèƒ½ã‚’è¿½åŠ 
 
 C51ASM V1.2             Copyright (c) 2009 Atmel Corp.            PAGE 2
 
@@ -73,7 +73,7 @@ C51ASM V1.2             Copyright (c) 2009 Atmel Corp.            PAGE 2
    46:                          ;     ADCGET   [variable]  get "valiable
    47:                          ;     ADCSTOP              close ADC fun
    48:                          ;
-   49:                          ;   2023.07.01 CH559T‚É‘Î‰Aƒpƒ‹ƒX¶¬ƒ
+   49:                          ;   2023.07.01 CH559Tã«å¯¾å¿œã€ãƒ‘ãƒ«ã‚¹ç”Ÿæˆ
    50:                          ;
    51:                          ;     PULSE [loop-number]  generate puls
    52:                          ;                          pulse generat
@@ -699,7 +699,7 @@ C51ASM V1.2            Copyright (c) 2009 Atmel Corp.            PAGE 12
  Line    I  Addr Code           Source
 
   604:                          ;
-  605:                          ;=== CH559 Added =====
+  605:                          ;=== CH558 Added =====
   606:           N      0FFF    ERAMEND	EQU	0FFFH ; EX-RAM last addr (6K
   607:                          ;=====================
   608:                          ;
@@ -12175,3 +12175,4 @@ ZSURP                            BIT        36       519
 ZT0                              CODE     1E5F      7699
 ZT1                              CODE     1E66      7704
 ZTEST                            CODE     1E5D      7697
+
